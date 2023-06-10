@@ -26,7 +26,7 @@
                         <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
                              aria-hidden="true">
                             <path stroke-linecap="round" stroke-linejoin="round"
-                                  d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0"/>
+                                  d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0"></path>
                         </svg>
                     </button>
                     <a href="#" class="-m-1.5 p-1.5">
@@ -35,40 +35,6 @@
                              src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                              alt="">
                     </a>
-                </div>
-            </div>
-            <!-- Mobile menu, show/hide based on menu open state. -->
-            <div class="lg:hidden" role="dialog" aria-modal="true">
-                <!-- Background backdrop, show/hide based on slide-over state. -->
-                <div class="fixed inset-0 z-50"></div>
-                <div class="fixed inset-y-0 left-0 z-50 w-full overflow-y-auto bg-white px-4 pb-6 sm:max-w-sm sm:px-6 sm:ring-1 sm:ring-gray-900/10">
-                    <div class="-ml-0.5 flex h-16 items-center gap-x-6">
-                        <button type="button" class="-m-2.5 p-2.5 text-gray-700">
-                            <span class="sr-only">Close menu</span>
-                            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                 stroke="currentColor"
-                                 aria-hidden="true">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
-                            </svg>
-                        </button>
-                        <div class="-ml-0.5">
-                            <a href="#" class="-m-1.5 block p-1.5">
-                                <span class="sr-only">Your Company</span>
-                                <img class="h-8 w-auto"
-                                     src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="">
-                            </a>
-                        </div>
-                    </div>
-                    <div class="mt-2 space-y-2">
-                        <a href="#"
-                           class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Home</a>
-                        <a href="#"
-                           class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Invoices</a>
-                        <a href="#"
-                           class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Clients</a>
-                        <a href="#"
-                           class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Expenses</a>
-                    </div>
                 </div>
             </div>
         </header>
@@ -102,7 +68,8 @@
                     </li>
                 </ol>
             </nav>
-            <form class="mt-8" action="/save" method="post" enctype="multipart/form-data">
+            <form class="mt-8" action="/use" method="post" enctype="multipart/form-data">
+                {{ form.csrf_token }}
                 <div class="space-y-12">
                     <div class="border-b border-gray-900/10 pb-12">
                         <h2 class="text-base font-semibold leading-7 text-gray-900">分析檔案</h2>
@@ -111,32 +78,28 @@
                         </p>
 
                         <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
-                            <div class="sm:col-span-4">
-                                <label for="username"
-                                       class="block text-sm font-medium leading-6 text-gray-900">Username</label>
-                                <div class="mt-2">
-                                    <div class="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
-                                        <span class="flex select-none items-center pl-3 text-gray-500 sm:text-sm">workcation.com/</span>
-                                        <input type="text" name="username" id="username" autocomplete="username"
-                                               class="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
-                                               placeholder="janesmith">
-                                    </div>
-                                </div>
-                            </div>
-
                             <div class="col-span-full">
                                 <label for="about"
-                                       class="block text-sm font-medium leading-6 text-gray-900">About</label>
+                                       class="block text-sm font-medium leading-6 text-gray-900">檔案描述</label>
                                 <div class="mt-2">
-                            <textarea id="about" name="about" rows="3"
-                                      class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"></textarea>
+                             <textarea id="about" name="about" rows="3"
+                                       class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"></textarea>
                                 </div>
-                                <p class="mt-3 text-sm leading-6 text-gray-600">Write a few sentences about
-                                    yourself.</p>
+                                <p class="mt-3 text-sm leading-6 text-gray-600">
+                                    簡述一下這個檔案的用途
+                                </p>
                             </div>
                             <div class="col-span-full">
                                 <label for="file"
                                        class="block text-sm font-medium leading-6 text-gray-900">上傳檔案</label>
+
+                                {% if form.file.errors %}
+                                    <ul class="block text-sm font-medium text-red-800">
+                                        {% for error in form.file.errors %}
+                                            <li>{{ error }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                {% endif %}
                                 <div class="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
                                     <div class="text-center">
                                         <svg class="mx-auto h-12 w-12 text-gray-300" xmlns="http://www.w3.org/2000/svg"
@@ -145,14 +108,12 @@
                                             <path stroke-linecap="round" stroke-linejoin="round"
                                                   d="M3.375 19.5h17.25m-17.25 0a1.125 1.125 0 01-1.125-1.125M3.375 19.5h7.5c.621 0 1.125-.504 1.125-1.125m-9.75 0V5.625m0 12.75v-1.5c0-.621.504-1.125 1.125-1.125m18.375 2.625V5.625m0 12.75c0 .621-.504 1.125-1.125 1.125m1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125m0 3.75h-7.5A1.125 1.125 0 0112 18.375m9.75-12.75c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125m19.5 0v1.5c0 .621-.504 1.125-1.125 1.125M2.25 5.625v1.5c0 .621.504 1.125 1.125 1.125m0 0h17.25m-17.25 0h7.5c.621 0 1.125.504 1.125 1.125M3.375 8.25c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125m17.25-3.75h-7.5c-.621 0-1.125.504-1.125 1.125m8.625-1.125c.621 0 1.125.504 1.125 1.125v1.5c0 .621-.504 1.125-1.125 1.125m-17.25 0h7.5m-7.5 0c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125M12 10.875v-1.5m0 1.5c0 .621-.504 1.125-1.125 1.125M12 10.875c0 .621.504 1.125 1.125 1.125m-2.25 0c.621 0 1.125.504 1.125 1.125M13.125 12h7.5m-7.5 0c-.621 0-1.125.504-1.125 1.125M20.625 12c.621 0 1.125.504 1.125 1.125v1.5c0 .621-.504 1.125-1.125 1.125m-17.25 0h7.5M12 14.625v-1.5m0 1.5c0 .621-.504 1.125-1.125 1.125M12 14.625c0 .621.504 1.125 1.125 1.125m-2.25 0c.621 0 1.125.504 1.125 1.125m0 1.5v-1.5m0 0c0-.621.504-1.125 1.125-1.125m0 0h7.5"></path>
                                         </svg>
-
                                         <div class="mt-4 flex text-sm leading-6 text-gray-600">
                                             <label for="file-upload"
-                                                   class="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500">
-                                                <span>上傳檔案</span>
-                                                <input id="file-upload" name="file-upload" type="file" class="sr-only">
+                                                   class="relative flex cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500">
+                                                <span id="upload-text">上傳檔案</span>
+                                                <input id="file-upload" name="file" type="file" class="sr-only">
                                             </label>
-                                            <p class="pl-1">或把檔案拖移到這邊</p>
                                         </div>
                                         <p class="text-xs leading-5 text-gray-600">CSV, XLS, XLSX （最大 10MB）</p>
                                     </div>
@@ -160,102 +121,17 @@
                             </div>
                         </div>
                     </div>
-
-                    <div class="border-b border-gray-900/10 pb-12">
-                        <h2 class="text-base font-semibold leading-7 text-gray-900">Personal Information</h2>
-                        <p class="mt-1 text-sm leading-6 text-gray-600">Use a permanent address where you can receive
-                            mail.</p>
-
-                        <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
-                            <div class="sm:col-span-3">
-                                <label for="first-name" class="block text-sm font-medium leading-6 text-gray-900">First
-                                    name</label>
-                                <div class="mt-2">
-                                    <input type="text" name="first-name" id="first-name" autocomplete="given-name"
-                                           class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                                </div>
-                            </div>
-
-                            <div class="sm:col-span-3">
-                                <label for="last-name" class="block text-sm font-medium leading-6 text-gray-900">Last
-                                    name</label>
-                                <div class="mt-2">
-                                    <input type="text" name="last-name" id="last-name" autocomplete="family-name"
-                                           class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                                </div>
-                            </div>
-
-                            <div class="sm:col-span-4">
-                                <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Email
-                                    address</label>
-                                <div class="mt-2">
-                                    <input id="email" name="email" type="email" autocomplete="email"
-                                           class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                                </div>
-                            </div>
-
-                            <div class="sm:col-span-3">
-                                <label for="country"
-                                       class="block text-sm font-medium leading-6 text-gray-900">Country</label>
-                                <div class="mt-2">
-                                    <select id="country" name="country" autocomplete="country-name"
-                                            class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
-                                        <option>United States</option>
-                                        <option>Canada</option>
-                                        <option>Mexico</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="col-span-full">
-                                <label for="street-address" class="block text-sm font-medium leading-6 text-gray-900">Street
-                                    address</label>
-                                <div class="mt-2">
-                                    <input type="text" name="street-address" id="street-address"
-                                           autocomplete="street-address"
-                                           class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                                </div>
-                            </div>
-
-                            <div class="sm:col-span-2 sm:col-start-1">
-                                <label for="city" class="block text-sm font-medium leading-6 text-gray-900">City</label>
-                                <div class="mt-2">
-                                    <input type="text" name="city" id="city" autocomplete="address-level2"
-                                           class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                                </div>
-                            </div>
-
-                            <div class="sm:col-span-2">
-                                <label for="region" class="block text-sm font-medium leading-6 text-gray-900">State /
-                                    Province</label>
-                                <div class="mt-2">
-                                    <input type="text" name="region" id="region" autocomplete="address-level1"
-                                           class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                                </div>
-                            </div>
-
-                            <div class="sm:col-span-2">
-                                <label for="postal-code" class="block text-sm font-medium leading-6 text-gray-900">ZIP /
-                                    Postal
-                                    code</label>
-                                <div class="mt-2">
-                                    <input type="text" name="postal-code" id="postal-code" autocomplete="postal-code"
-                                           class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
 
                 <div class="mt-6 flex items-center justify-end gap-x-6">
-                    <button type="button" class="text-sm font-semibold leading-6 text-gray-900">Cancel</button>
-                    <button type="submit"
-                            class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
-                        Save
-                    </button>
+                    {{ form.submit(class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600") }}
                 </div>
             </form>
         </div>
     </div>
+    <script>
+        document.querySelector('#file-upload').addEventListener('change', (e) => {
+            document.querySelector('#upload-text').innerText = e.target.files[0].name
+        })
+    </script>
 {% endblock %}
