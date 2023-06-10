@@ -186,8 +186,20 @@
                                         </time>
                                     </dd>
                                 </div>
-                                <div class="">
-                                    <img src="{{ url_for('static', filename=data['id']+'.jpg') }}"
+                                <div class="grid grid-cols-2 w-full border col-span-2">
+                                    <img src="{{ url_for('static', filename=data['id']+'-1.jpg') }}"
+                                         onerror="imgError(this)"
+                                         onload="imgLoad(this)"
+                                         alt=""/>
+                                    <img src="{{ url_for('static', filename=data['id']+'-2.jpg') }}"
+                                         onerror="imgError(this)"
+                                         onload="imgLoad(this)"
+                                         alt=""/>
+                                    <img src="{{ url_for('static', filename=data['id']+'-3.jpg') }}"
+                                         onerror="imgError(this)"
+                                         onload="imgLoad(this)"
+                                         alt=""/>
+                                    <img src="{{ url_for('static', filename=data['id']+'-4.jpg') }}"
                                          onerror="imgError(this)"
                                          onload="imgLoad(this)"
                                          alt=""/>
