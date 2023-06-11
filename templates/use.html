@@ -15,8 +15,8 @@
                     </button>
                 </div>
                 <nav class="hidden md:flex md:gap-x-11 md:text-sm md:font-semibold md:leading-6 md:text-gray-700">
-                    <a href="/my">我的上傳</a>
-                    <a href="/use">上傳資料</a>
+                    <a href="/my">My Upload</a>
+                    <a href="/use">Upload Data</a>
                 </nav>
                 <div class="flex flex-1 items-center justify-end gap-x-8">
                 </div>
@@ -30,14 +30,14 @@
                         <div class="flex flex-col border-l-4 border-indigo-600 py-2 pl-4 md:border-l-0 md:border-t-4 md:pb-0 md:pl-0 md:pt-4"
                              aria-current="step">
                             <span class="text-sm font-medium text-indigo-600">Step 1</span>
-                            <span class="text-sm font-medium">上傳資料檔</span>
+                            <span class="text-sm font-medium">Upload Data檔</span>
                         </div>
                     </li>
                     <li class="md:flex-1">
                         <!-- Upcoming Step -->
                         <div class="group flex flex-col border-l-4 border-gray-200 py-2 pl-4 hover:border-gray-300 md:border-l-0 md:border-t-4 md:pb-0 md:pl-0 md:pt-4">
                             <span class="text-sm font-medium text-gray-500 group-hover:text-gray-700">Step 2</span>
-                            <span class="text-sm font-medium">檢視圖表</span>
+                            <span class="text-sm font-medium">Generated Graph</span>
                         </div>
                     </li>
                 </ol>
@@ -46,26 +46,28 @@
                 {{ form.csrf_token }}
                 <div class="space-y-12">
                     <div class="border-b border-gray-900/10 pb-12">
-                        <h2 class="text-base font-semibold leading-7 text-gray-900">分析檔案</h2>
+                        <h2 class="text-base font-semibold leading-7 text-gray-900">Analyze the file</h2>
                         <p class="mt-1 text-sm leading-6 text-gray-600">
-                            請不要上傳機敏資料，資料將會傳到伺服器進行分析
+                            Please do not upload sensitive data, the data will be uploaded to the server for analysis
                         </p>
 
                         <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                             <div class="col-span-full">
                                 <label for="about"
-                                       class="block text-sm font-medium leading-6 text-gray-900">檔案描述</label>
+                                       class="block text-sm font-medium leading-6 text-gray-900">File Description</label>
                                 <div class="mt-2">
                              <textarea id="about" name="about" rows="3"
                                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"></textarea>
                                 </div>
                                 <p class="mt-3 text-sm leading-6 text-gray-600">
-                                    簡述一下這個檔案的用途
+                                    Brief description for your file.
                                 </p>
                             </div>
                             <div class="col-span-full">
                                 <label for="file"
-                                       class="block text-sm font-medium leading-6 text-gray-900">上傳檔案</label>
+                                       class="block text-sm font-medium leading-6 text-gray-900">
+                                    File Upload
+                                </label>
 
                                 {% if form.file.errors %}
                                     <ul class="block text-sm font-medium text-red-800">
@@ -85,11 +87,13 @@
                                         <div class="mt-4 flex justify-center text-sm leading-6 text-gray-600">
                                             <label for="file-upload"
                                                    class="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500">
-                                                <span id="upload-text">上傳檔案</span>
+                                                <span id="upload-text">
+                                                    Select the file to upload
+                                                </span>
                                                 <input id="file-upload" name="file" type="file" class="sr-only">
                                             </label>
                                         </div>
-                                        <p class="text-xs leading-5 text-gray-600">CSV （最大 10MB）</p>
+                                        <p class="text-xs leading-5 text-gray-600">CSV （Max 10MB）</p>
                                     </div>
                                 </div>
                             </div>

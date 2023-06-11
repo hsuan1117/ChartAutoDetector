@@ -19,12 +19,12 @@ app.secret_key = 'secret_key'
 class DataForm(FlaskForm):
     file = FileField('file', validators=[
         FileRequired(),
-        FileAllowed(['csv'], '僅限上傳資料檔!')
+        FileAllowed(['csv'], 'Only Data Files!')
     ])
     about = StringField('about', validators=[
         DataRequired()
     ])
-    submit = SubmitField("送出")
+    submit = SubmitField("Submit")
 
 
 def gen_id():
